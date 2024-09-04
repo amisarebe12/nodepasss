@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOTEPAD ONLINE</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+</head>
+<body>
+    <div id="loading-overlay">
+        <div class="spinner"></div>
+    </div>
+    <div id="app">
+        <h1 id="title">NOTEPAD ONLINE</h1>
+        <div id="toolbar">
+            <button class="ripple" id="dark-mode-toggle" title="Chuyển đổi chế độ tối/sáng"><i class="fas fa-moon"></i></button>
+            <button id="export-notes" title="Xuất ghi chú"><i class="fas fa-file-export"></i></button>
+            <button id="import-notes" title="Nhập ghi chú"><i class="fas fa-file-import"></i></button>
+            <input type="file" id="import-file" style="display: none;">
+            <button id="customize-theme" title="Tùy chỉnh giao diện"><i class="fas fa-paint-brush"></i></button>
+        </div>
+        <div id="main-container">
+            <div id="link-container">
+                <h2>Link ghi chú</h2>
+                <input type="text" id="note-link" readonly>
+                <button id="copy-link">Sao chép link</button>
+            </div>
+            <div id="note-container">
+                <div class="title-container">
+                    <label for="note-title" class="note-label">Tiêu đề ghi chú</label>
+                    <input type="text" id="note-title" placeholder="Nhập tiêu đề ở đây" required>
+                </div>
+                <div id="editor-toolbar">
+                    <button type="button" data-command="bold"><i class="fas fa-bold"></i></button>
+                    <button type="button" data-command="italic"><i class="fas fa-italic"></i></button>
+                    <button type="button" data-command="underline"><i class="fas fa-underline"></i></button>
+                    <button type="button" data-command="justifyLeft"><i class="fas fa-align-left"></i></button>
+                    <button type="button" data-command="justifyCenter"><i class="fas fa-align-center"></i></button>
+                    <button type="button" data-command="justifyRight"><i class="fas fa-align-right"></i></button>
+                    <button type="button" data-command="justifyFull"><i class="fas fa-align-justify"></i></button>
+                    <button type="button" id="insert-image"><i class="fas fa-image"></i></button>
+                    <input type="file" id="image-upload" accept="image/*" style="display: none;">
+                </div>
+                <div id="note-content" contenteditable="true"></div>
+            </div>
+            <div id="edit-container">
+                <div id="note-list"></div>
+                <input type="text" id="search-notes" placeholder="Tìm kiếm ghi chú...">
+                <button type="button" id="add-note">ADD</button>
+                <form id="note-form">
+                    <div class="encrypt-container">
+                        <input type="checkbox" id="encrypt-note">
+                        <label for="encrypt-note">Mã hóa ghi chú</label>
+                        <input type="password" id="encryption-password" placeholder="Mật khẩu mã hóa" style="display: none;">
+                    </div>
+                    <div class="form-buttons">
+                        <button type="submit">Lưu ghi chú</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="save-progress" class="progress-bar"></div>
+    <script src="script.js"></script>
+    <div id="version">Phiên bản 1.1</div>
+    <div id="audio-controls">
+        <button id="toggle-music" class="ripple" title="Tắt/Bật nhạc">
+            <i class="fas fa-music"></i>
+        </button>
+        <button id="toggle-volume" class="ripple" title="Tắt/Bật âm lượng">
+            <i class="fas fa-volume-up"></i>
+        </button>
+    </div>
+    <div id="author-text">
+        Code by: DHH
+    </div>
+</body>
+</html>
